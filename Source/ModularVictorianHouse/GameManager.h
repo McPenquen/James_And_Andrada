@@ -29,12 +29,21 @@ class MODULARVICTORIANHOUSE_API UGameManager : public UGameInstanceSubsystem
 
 public:
 	UFUNCTION(BlueprintCallable)
+	void NewGame();
+
+	UFUNCTION(BlueprintCallable)
 	void GameOver();
 
 	UFUNCTION(BlueprintCallable)
-	void Victory(float TimeScore, int32 MaxTreasureAmount, int32 CurrentTreasureAmount);
+	void Victory(float TimeScore);
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TArray<FGameScore> Scores;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 NumberOfPaintings = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 MaxNumberOfPaintings = 5;
 };

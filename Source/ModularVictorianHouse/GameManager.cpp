@@ -3,16 +3,22 @@
 
 #include "GameManager.h"
 
+void UGameManager::NewGame()
+{
+	MaxNumberOfPaintings = 5;
+	NumberOfPaintings = 0;
+}
+
 void UGameManager::GameOver()
 {
 	// TODO GAME OVER
 }
 
-void UGameManager::Victory(float TimeScore, int32 MaxTreasureAmount, int32 CurrentTreasureAmount)
+void UGameManager::Victory(float TimeScore)
 {
 	FGameScore NewScore;
 	NewScore.TimeScore = TimeScore;
-	NewScore.MaxTreasureAmount = MaxTreasureAmount;
-	NewScore.CurrentTreasureAmount = CurrentTreasureAmount;
+	NewScore.MaxTreasureAmount = MaxNumberOfPaintings;
+	NewScore.CurrentTreasureAmount = NumberOfPaintings;
 	Scores.Add(NewScore);
 }
