@@ -30,4 +30,5 @@ public:
 
 	//UPROPERTY(BlueprintAssignable)
 	//FOnDarknessStart OnDarknessStart;
+
 };

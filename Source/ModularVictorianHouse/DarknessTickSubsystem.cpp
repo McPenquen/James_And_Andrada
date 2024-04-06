@@ -19,5 +19,5 @@ void UDarknessTickSubsystem::Tick(float DeltaTime)
 
 TStatId UDarknessTickSubsystem::GetStatId() const
 {
-	return Super::GetStatId();
+	RETURN_QUICK_DECLARE_CYCLE_STAT(UDarknessTickSubsystem, STATGROUP_Tickables);
 }
