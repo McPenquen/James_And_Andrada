@@ -10,5 +10,9 @@ UCLASS()
 class MODULARVICTORIANHOUSE_API UGameManager : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
-	
+
+public:
+
+	UFUNCTION(BlueprintCallable)
+	void GameOver(float ScoreTime);
 };

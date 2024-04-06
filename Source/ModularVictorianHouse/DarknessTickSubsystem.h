@@ -32,13 +32,16 @@ public:
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float DarknessLength = 6.0f;
+	float DarknessLength = 4.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float LightLength = 2.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool IsDark = false;
+	bool IsDark = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	float TimeScore = 0.0f;
 
 private:
 	UPROPERTY()

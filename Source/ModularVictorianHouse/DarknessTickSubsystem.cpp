@@ -5,6 +5,7 @@
 void UDarknessTickSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
+	TimeScore = 0.0f;
 }
 
 void UDarknessTickSubsystem::Deinitialize() 
@@ -16,6 +17,7 @@ void UDarknessTickSubsystem::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	m_CurrentCountdown += DeltaTime;
+	TimeScore += DeltaTime;
 
 	if (IsDark && m_CurrentCountdown >= DarknessLength)
 	{

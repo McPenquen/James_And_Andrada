@@ -3,3 +3,7 @@
 
 #include "GameManager.h"
 
+void UGameManager::GameOver(float ScoreTime)
+{
+	// TODO GAME OVER
+}
