@@ -3,12 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Subsystems/GameInstanceSubsystem.h"
-#include "GameManager.generated.h"
+#include "GameFramework/Character.h"
+
+#include "EnemyGhost.generated.h"
 
 UCLASS()
-class MODULARVICTORIANHOUSE_API UGameManager : public UGameInstanceSubsystem
+class MODULARVICTORIANHOUSE_API AEnemyGhost : public ACharacter
 {
 	GENERATED_BODY()
-	
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TArray<AActor*> PathStops;
 };
