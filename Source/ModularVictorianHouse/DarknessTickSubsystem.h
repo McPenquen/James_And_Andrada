@@ -7,9 +7,8 @@
 
 #include "DarknessTickSubsystem.generated.h"
 
-//DECLARE_DYNAMIC_DELEGATE(FOnDarknessStop);
-//DECLARE_DYNAMIC_DELEGATE(FOnDarknessStart);
-
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDarknessStop);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDarknessStart);
 
 UCLASS()
 class MODULARVICTORIANHOUSE_API UDarknessTickSubsystem : public UTickableWorldSubsystem
@@ -25,10 +24,10 @@ public:
 	virtual TStatId GetStatId() const override;
 
 public:
-	//UPROPERTY(BlueprintAssignable)
-	//FOnDarknessStop OnDarknessStop;
+	UPROPERTY(BlueprintAssignable)
+	FOnDarknessStop OnDarknessStop;
 
-	//UPROPERTY(BlueprintAssignable)
-	//FOnDarknessStart OnDarknessStart;
+	UPROPERTY(BlueprintAssignable)
+	FOnDarknessStart OnDarknessStart;
 
 };
