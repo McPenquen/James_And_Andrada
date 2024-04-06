@@ -30,4 +30,17 @@ public:
 	UPROPERTY(BlueprintAssignable)
 	FOnDarknessStart OnDarknessStart;
 
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float DarknessLength = 6.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float LightLength = 2.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsDark = false;
+
+private:
+	UPROPERTY()
+	float m_CurrentCountdown = 0.0f;
 };
