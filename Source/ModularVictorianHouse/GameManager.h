@@ -6,6 +6,9 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "GameManager.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLifeLost, int, NewLivesNum);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FPaintingFound, int, NewPaintingsNum);
+
 USTRUCT(BlueprintType)
 struct FGameScore
 {
@@ -29,21 +32,52 @@ class MODULARVICTORIANHOUSE_API UGameManager : public UGameInstanceSubsystem
 
 public:
 	UFUNCTION(BlueprintCallable)
-	void NewGame();
+	void NewGame(int32 LivesNum, int32 NewMaxNumberOfPaintings);
 
 	UFUNCTION(BlueprintCallable)
-	void GameOver();
+	bool IsGameOver();
 
 	UFUNCTION(BlueprintCallable)
 	void Victory(float TimeScore);
 
+	UFUNCTION(BlueprintCallable)
+	void SetNewLivesNum(int32 LivesNum);
+
+	UFUNCTION(BlueprintCallable)
+	int32 GetNumOfLives() const { return m_NumberOfLives; }
+
+	UFUNCTION(BlueprintCallable)
+	void LoseLife();
+
+	UFUNCTION(BlueprintCallable)
+	void SetNewCollectedPaintingsNum(int32 NewPaintingNum);
+
+	UFUNCTION(BlueprintCallable)
+	int32 GetNewCollectedPaintingsNum() const { return m_NumberOfPaintings; }
+
+	UFUNCTION(BlueprintCallable)
+	void GainPainting();
+
+	UFUNCTION(BlueprintCallable)
+	bool HasAllPaintings();
+
 public:
+	UPROPERTY(BlueprintAssignable)
+	FPaintingFound OnPaintingFound;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnLifeLost OnLifeLost;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TArray<FGameScore> Scores;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 NumberOfPaintings = 0;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 MaxNumberOfPaintings = 5;
+
+private:
+	UPROPERTY()
+	int32 m_NumberOfPaintings = 0;
+
+	UPROPERTY()
+	int32 m_NumberOfLives = 0;
 };

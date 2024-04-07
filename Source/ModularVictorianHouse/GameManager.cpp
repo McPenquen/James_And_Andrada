@@ -3,15 +3,16 @@
 
 #include "GameManager.h"
 
-void UGameManager::NewGame()
+void UGameManager::NewGame(int32 LivesNum, int32 NewMaxNumberOfPaintings)
 {
-	MaxNumberOfPaintings = 5;
-	NumberOfPaintings = 0;
+	MaxNumberOfPaintings = NewMaxNumberOfPaintings;
+	m_NumberOfPaintings = 0;
+	m_NumberOfLives = LivesNum;
 }
 
-void UGameManager::GameOver()
+bool UGameManager::IsGameOver()
 {
-	// TODO GAME OVER
+	return m_NumberOfLives <= 0;
 }
 
 void UGameManager::Victory(float TimeScore)
@@ -19,6 +20,33 @@ void UGameManager::Victory(float TimeScore)
 	FGameScore NewScore;
 	NewScore.TimeScore = TimeScore;
 	NewScore.MaxTreasureAmount = MaxNumberOfPaintings;
-	NewScore.CurrentTreasureAmount = NumberOfPaintings;
+	NewScore.CurrentTreasureAmount = m_NumberOfPaintings;
 	Scores.Add(NewScore);
+}
+
+void UGameManager::SetNewLivesNum(int32 LivesNum)
+{
+	m_NumberOfLives = LivesNum;
+}
+
+void UGameManager::LoseLife()
+{
+	m_NumberOfLives--;
+	OnLifeLost.Broadcast(m_NumberOfLives);
+}
+
+void UGameManager::SetNewCollectedPaintingsNum(int32 NewPaintingNum)
+{
+	m_NumberOfPaintings = NewPaintingNum;
+}
+
+void UGameManager::GainPainting()
+{
+	m_NumberOfPaintings++;
+	OnPaintingFound.Broadcast(m_NumberOfPaintings);
+}
+
+bool UGameManager::HasAllPaintings()
+{
+	return m_NumberOfPaintings >= MaxNumberOfPaintings;
 }
