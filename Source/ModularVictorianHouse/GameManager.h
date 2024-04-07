@@ -79,5 +79,5 @@ private:
 	int32 m_NumberOfPaintings = 0;
 
 	UPROPERTY()
-	int32 m_NumberOfLives = 0;
+	int32 m_NumberOfLives = 3;
 };
