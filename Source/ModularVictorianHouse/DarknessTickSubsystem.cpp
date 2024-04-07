@@ -31,6 +31,11 @@ void UDarknessTickSubsystem::Tick(float DeltaTime)
 		IsDark = true;
 		OnDarknessStart.Broadcast();
 	}
+
+	int Minutes = int(TimeScore / 60);
+	float Remainder = TimeScore - (float(Minutes) * 60.f);
+	int Seconds = int(Remainder);
+	m_TimeString = FString::FromInt(Minutes) + " : " + FString::FromInt(Seconds);
 }
 
 TStatId UDarknessTickSubsystem::GetStatId() const

@@ -15,10 +15,10 @@ bool UGameManager::IsGameOver()
 	return m_NumberOfLives <= 0;
 }
 
-void UGameManager::Victory(float TimeScore)
+void UGameManager::Victory(FString TimeScoreString)
 {
 	FGameScore NewScore;
-	NewScore.TimeScore = TimeScore;
+	NewScore.TimeScore = TimeScoreString;
 	NewScore.MaxTreasureAmount = MaxNumberOfPaintings;
 	NewScore.CurrentTreasureAmount = m_NumberOfPaintings;
 	Scores.Add(NewScore);
