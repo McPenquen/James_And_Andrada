@@ -24,6 +24,10 @@ public:
 	virtual TStatId GetStatId() const override;
 
 public:
+	UFUNCTION(BlueprintCallable)
+	FString GetScoreTimeUIString() const { return m_TimeString; }
+
+public:
 	UPROPERTY(BlueprintAssignable)
 	FOnDarknessStop OnDarknessStop;
 
@@ -46,4 +50,7 @@ public:
 private:
 	UPROPERTY()
 	float m_CurrentCountdown = 0.0f;
+
+	UPROPERTY()
+	FString m_TimeString = "";
 };

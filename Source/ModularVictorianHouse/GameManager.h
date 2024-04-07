@@ -16,7 +16,7 @@ struct FGameScore
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	float TimeScore = 0;
+	FString TimeScore = "";
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	int32 MaxTreasureAmount = 0;
@@ -38,7 +38,7 @@ public:
 	bool IsGameOver();
 
 	UFUNCTION(BlueprintCallable)
-	void Victory(float TimeScore);
+	void Victory(FString TimeScoreString);
 
 	UFUNCTION(BlueprintCallable)
 	void SetNewLivesNum(int32 LivesNum);
