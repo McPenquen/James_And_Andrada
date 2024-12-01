@@ -7,7 +7,6 @@ FRotator UBsckwardsPawnSensingComponent::GetSensorRotation() const
 {
 	FRotator SensorRotation(FRotator::ZeroRotator);
 	const AActor* SensorActor = GetSensorActor();
-
 	if (SensorActor != NULL)
 	{
 		SensorRotation = SensorActor->GetActorRotation() * -1.0f;
